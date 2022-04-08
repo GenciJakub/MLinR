@@ -1,5 +1,3 @@
-setwd("C:/Users/Jakub/Documents/Vyska/LS2122/MLvR/DUe1/")
-
 # Q1
 titanic_train = read.csv("train.csv", header=TRUE, sep=',')
 titanic_test = read.csv("test.csv", header=TRUE, sep=',')
