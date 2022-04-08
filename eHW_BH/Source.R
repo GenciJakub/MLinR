@@ -47,10 +47,15 @@ cat("Recall of the model is", cm1[2,2]/sum(cm1[2,]), "\n")
 cat("F-measure of the model is", 2*((cm1[2,2]/sum(cm1[,2]) * cm1[2,2]/sum(cm1[2,]))/(cm1[2,2]/sum(cm1[,2]) + cm1[2,2]/sum(cm1[2,]))),"\n")
 
 # Q3
-movies_big = read.csv("mov.development.csv", header=TRUE, sep='\t')
-# movies = read.csv("mov.development.csv", header=TRUE, sep='\t')
-movies = movies_big[1:2500,]
+movies = read.csv("mov.development.csv", header=TRUE, sep='\t')
 movies = subset(movies, select = -zip)
+movies = subset(movies, select = -timestamp)
+movies = subset(movies, select = -title)
+movies = subset(movies, select = -release_date)
+movies = subset(movies, select = -imdb_url)
+movies = subset(movies, select = -directors)
+movies = subset(movies, select = -writers)
+movies = subset(movies, select = -stars)
 
 # splitting into train and test set
 set.seed(42)
@@ -76,19 +81,19 @@ m_tr5 = movies_train
 m_tr5$rating = factor(m_tr5$rating, levels = c(1,2,3,4,5), labels = c(0,0,0,0,1))
 
 # Fitting models on the train set
-m1_1 = glm(rating ~ . - timestamp - title - release_date - imdb_url,
+m1_1 = glm(rating ~ .,
            data = m_tr1, family = binomial(link = "logit"))
 
-m1_2 = glm(rating ~ . - timestamp - title - release_date - imdb_url,
+m1_2 = glm(rating ~ .,
            data = m_tr2, family = binomial(link = "logit"))
 
-m1_3 = glm(rating ~ . - timestamp - title - release_date - imdb_url,
+m1_3 = glm(rating ~ .,
            data = m_tr3, family = binomial(link = "logit"))
 
-m1_4 = glm(rating ~ . - timestamp - title - release_date - imdb_url,
+m1_4 = glm(rating ~ .,
            data = m_tr4, family = binomial(link = "logit"))
 
-m1_5 = glm(rating ~ . - timestamp - title - release_date - imdb_url,
+m1_5 = glm(rating ~ .,
            data = m_tr5, family = binomial(link = "logit"))
 
 
