@@ -105,7 +105,6 @@ p1_4 = predict.glm(m1_4, movies_test, type = "response")
 p1_5 = predict.glm(m1_5, movies_test, type = "response")
 p1_all = matrix(c(p1_1, p1_2, p1_3, p1_4, p1_5), nrow = 5)
 classifications = apply(p1_all, MARGIN = 2, FUN = which.max)
-classifications
 
 # Creating confusion matrix
 cm1 = table(movies_test[,3], classifications)
