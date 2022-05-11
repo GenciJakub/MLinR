@@ -1,6 +1,3 @@
-# Set the working directory
-setwd("C:/Users/Jakub/Documents/Vyska/LS2122/MLvR/DU1/")
-
 # Store the data
 library(ISLR)
 data = Auto
